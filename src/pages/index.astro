@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { getCollection } from 'astro:content';
+
+const blog = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 5);
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.year - a.data.year)
+  .slice(0, 5);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit' });
+---
+
+<BaseLayout description="Personal site of Steven Qiao.">
+  <h1>Hi, I'm Steven.</h1>
+  <p>
+    Short bio goes here. Replace this paragraph with a sentence or two about who you are and what
+    you're up to. The rest of the site is for past work, hobbies, experience, blog posts, and a
+    curated web archive.
+  </p>
+
+  <hr />
+
+  <h2>Recent writing</h2>
+  {blog.length > 0 ? (
+    <PostList
+      entries={blog.map((p) => ({
+        href: `/blog/${p.id}/`,
+        title: p.data.title,
+        meta: fmtDate(p.data.date),
+        tags: p.data.tags,
+      }))}
+    />
+  ) : (
+    <p><em>No posts yet.</em></p>
+  )}
+
+  <hr />
+
+  <h2>Selected projects</h2>
+  {projects.length > 0 ? (
+    <PostList
+      entries={projects.map((p) => ({
+        href: `/projects/${p.id}/`,
+        title: p.data.title,
+        meta: String(p.data.year),
+        tags: p.data.tags,
+      }))}
+    />
+  ) : (
+    <p><em>No projects yet.</em></p>
+  )}
+</BaseLayout>

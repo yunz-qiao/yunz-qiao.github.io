@@ -1,0 +1,26 @@
+---
+interface Entry {
+  href: string;
+  title: string;
+  meta?: string;
+  tags?: string[];
+}
+
+interface Props {
+  entries: Entry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<ul class="entry-list">
+  {entries.map((e) => (
+    <li>
+      {e.meta && <span class="meta">{e.meta}</span>}
+      <span class="title"><a href={e.href}>{e.title}</a></span>
+      {e.tags && e.tags.length > 0 && (
+        <span class="tags">{e.tags.join(', ')}</span>
+      )}
+    </li>
+  ))}
+</ul>

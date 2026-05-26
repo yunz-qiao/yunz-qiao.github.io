@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const items = await getCollection('archive');
+
+const grouped = items.reduce<Record<string, typeof items>>((acc, item) => {
+  const cat = item.data.category;
+  (acc[cat] ||= []).push(item);
+  return acc;
+}, {});
+
+for (const cat of Object.keys(grouped)) {
+  grouped[cat].sort((a, b) => {
+    const da = a.data.date?.getTime() ?? 0;
+    const db = b.data.date?.getTime() ?? 0;
+    return db - da;
+  });
+}
+
+const categories = Object.keys(grouped).sort();
+---
+
+<BaseLayout title="Archive" description="A curated web archive.">
+  <h1>Archive</h1>
+  <p>
+    Links and resources worth keeping &mdash; with notes. Add entries as markdown files in
+    <code>src/content/archive/</code>.
+  </p>
+
+  {categories.length === 0 && <p><em>Empty.</em></p>}
+
+  {categories.map((cat) => (
+    <section>
+      <h2>{cat}</h2>
+      <ul class="entry-list">
+        {grouped[cat].map((item) => (
+          <li>
+            <span class="title">
+              {item.data.url ? (
+                <a href={item.data.url}>{item.data.title}</a>
+              ) : (
+                <a href={`/archive/${item.id}/`}>{item.data.title}</a>
+              )}
+              {item.data.description && (
+                <span style="color:var(--fg-muted);"> &mdash; {item.data.description}</span>
+              )}
+            </span>
+            {item.data.url && (
+              <span class="tags"><a href={`/archive/${item.id}/`}>notes</a></span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>

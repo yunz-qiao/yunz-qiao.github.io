@@ -1,0 +1,29 @@
+---
+const { pathname } = Astro.url;
+const isActive = (href: string) => {
+  if (href === '/') return pathname === '/' || pathname === '';
+  return pathname === href || pathname.startsWith(href + '/') || pathname === href + '/';
+};
+
+const links = [
+  { href: '/', label: 'about' },
+  { href: '/projects', label: 'projects' },
+  { href: '/experience', label: 'experience' },
+  { href: '/school', label: 'school' },
+  { href: '/blog', label: 'blog' },
+  { href: '/hobbies', label: 'hobbies' },
+  { href: '/archive', label: 'archive' },
+];
+---
+
+<header class="site">
+  <p class="title"><a href="/">Steven Qiao</a></p>
+  <nav>
+    {links.map((l, i) => (
+      <>
+        <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
+        {i < links.length - 1 && <span aria-hidden="true">·</span>}
+      </>
+    ))}
+  </nav>
+</header>

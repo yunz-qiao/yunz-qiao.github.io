@@ -1,0 +1,249 @@
+:root {
+  --fg: #111;
+  --fg-muted: #555;
+  --bg: #fff;
+  --rule: #ddd;
+  --link: #0066cc;
+  --link-visited: #6a4bb3;
+  --code-bg: #f4f4f4;
+  --max-w: 700px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* header / nav */
+header.site {
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+header.site .title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.75rem;
+}
+
+header.site .title a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+header.site nav {
+  font-size: 0.95rem;
+  color: var(--fg-muted);
+}
+
+header.site nav a {
+  color: var(--fg-muted);
+  text-decoration: none;
+  margin-right: 0.9rem;
+  text-transform: capitalize;
+}
+
+header.site nav a:hover,
+header.site nav a[aria-current="page"] {
+  color: var(--fg);
+  text-decoration: underline;
+}
+
+/* footer */
+footer.site {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+
+footer.site a {
+  color: var(--fg-muted);
+}
+
+/* typography */
+h1, h2, h3, h4 {
+  line-height: 1.25;
+  margin: 1.8em 0 0.6em;
+  font-weight: 600;
+}
+
+h1 { font-size: 1.6rem; margin-top: 0.2em; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.1rem; }
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+hr {
+  border: none;
+  text-align: center;
+  margin: 2.5rem 0;
+  color: var(--fg-muted);
+  overflow: visible;
+}
+
+hr::before {
+  content: "* * *";
+  letter-spacing: 0.5em;
+}
+
+/* code */
+code, pre, kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 0.9rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  line-height: 1.45;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* lists */
+ul, ol {
+  padding-left: 1.4em;
+}
+
+li {
+  margin: 0.25em 0;
+}
+
+/* listing pages (blog/projects/archive) */
+.entry-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.entry-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.entry-list .date,
+.entry-list .meta {
+  color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  min-width: 6rem;
+  flex-shrink: 0;
+}
+
+.entry-list .title {
+  flex: 1;
+}
+
+.entry-list .tags {
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+}
+
+/* post meta */
+.post-meta {
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+  margin: -0.4rem 0 1.6rem;
+}
+
+/* math (rehype-mathjax svg output) */
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* blockquote */
+blockquote {
+  margin: 1em 0;
+  padding: 0.2em 1em;
+  border-left: 3px solid var(--rule);
+  color: var(--fg-muted);
+}
+
+/* tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.95em;
+}
+
+th, td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.4em 0.6em;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+/* mobile */
+@media (max-width: 540px) {
+  .wrap { padding: 1.5rem 1rem 2.5rem; }
+  .entry-list li { flex-direction: column; gap: 0.15rem; }
+  .entry-list .date,
+  .entry-list .meta { min-width: 0; }
+}

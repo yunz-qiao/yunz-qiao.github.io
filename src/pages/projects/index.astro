@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.year - a.data.year);
+---
+
+<BaseLayout title="Projects">
+  <h1>Projects</h1>
+  {projects.length > 0 ? (
+    <PostList
+      entries={projects.map((p) => ({
+        href: `/projects/${p.id}/`,
+        title: p.data.title,
+        meta: String(p.data.year),
+        tags: p.data.tags,
+      }))}
+    />
+  ) : (
+    <p><em>No projects yet.</em></p>
+  )}
+</BaseLayout>
