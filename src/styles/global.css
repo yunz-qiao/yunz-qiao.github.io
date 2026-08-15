@@ -46,6 +46,14 @@
   --studs:
     radial-gradient(ellipse 6px 4px at 19px 3px, rgba(255, 255, 255, 0.32) 0 100%, transparent 100%),
     radial-gradient(ellipse 11px 11px at 19px 100%, var(--brick) 0 99%, transparent 100%);
+
+  /* Same shape at button scale. Gradients are computed per background tile, so
+     the small studs need their own geometry rather than a scaled --studs. */
+  --stud-sm-w: 22px;
+  --stud-sm-h: 6px;
+  --studs-sm:
+    radial-gradient(ellipse 4px 2px at 11px 2px, rgba(255, 255, 255, 0.34) 0 100%, transparent 100%),
+    radial-gradient(ellipse 7px 7px at 11px 100%, var(--brick) 0 99%, transparent 100%);
 }
 
 * {
@@ -167,6 +175,7 @@ header.site .bar-right {
 header.site .archive-link {
   --brick: var(--green);
   --wall: var(--green-dark);
+  position: relative;
   flex-shrink: 0;
   padding: 0.22rem 0.7rem 0.28rem;
   font-family: Fredoka, Nunito, system-ui, sans-serif;
@@ -178,6 +187,18 @@ header.site .archive-link {
   border-radius: 7px;
   box-shadow: 0 3px 0 var(--wall);
   transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+header.site .archive-link::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: calc(var(--stud-sm-h) * -1);
+  height: var(--stud-sm-h);
+  background-image: var(--studs-sm);
+  background-size: var(--stud-sm-w) var(--stud-sm-h);
+  background-repeat: repeat-x;
 }
 
 header.site .archive-link:hover,
@@ -196,7 +217,9 @@ header.site .archive-link[aria-current="page"] {
 header.site nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem 0.5rem;
+  /* row-gap leaves clearance for the studs poking up off each tab */
+  gap: 0.9rem 0.5rem;
+  padding-top: var(--stud-sm-h);
   font-size: 0.95rem;
 }
 
@@ -209,6 +232,7 @@ header.site nav a {
   --brick: var(--blue);
   --wall: var(--blue-dark);
   --ink: #fff;
+  position: relative;
   display: inline-block;
   margin: 0;
   padding: 0.3rem 0.85rem 0.35rem;
@@ -223,9 +247,30 @@ header.site nav a {
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
+/* studs, so each tab reads as an actual brick rather than a rounded rectangle */
+header.site nav a::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: calc(var(--stud-sm-h) * -1);
+  height: var(--stud-sm-h);
+  background-image: var(--studs-sm);
+  background-size: var(--stud-sm-w) var(--stud-sm-h);
+  background-repeat: repeat-x;
+}
+
 header.site nav a:nth-of-type(4n + 2) { --brick: var(--green);  --wall: var(--green-dark); }
 header.site nav a:nth-of-type(4n + 3) { --brick: var(--orange); --wall: var(--orange-dark); }
-header.site nav a:nth-of-type(4n + 4) { --brick: var(--yellow); --wall: var(--yellow-dark); --ink: var(--fg); }
+
+/* yellow tab keeps white lettering, held together by a dark stroke */
+header.site nav a:nth-of-type(4n + 4) {
+  --brick: var(--yellow);
+  --wall: var(--yellow-dark);
+  --ink: #fff;
+  -webkit-text-stroke: 0.7px var(--yellow-dark);
+  paint-order: stroke fill;
+}
 
 /* pressing a brick down onto the plate */
 header.site nav a:hover,
