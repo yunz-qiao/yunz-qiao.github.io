@@ -1,0 +1,113 @@
+---
+// Decorative Tetris-style backdrop: bricks drift down behind the page.
+// Purely presentational — aria-hidden, pointer-events: none, no JS.
+//
+// Negative delays start each brick mid-fall, so the field looks settled on load
+// instead of every piece entering from the top at once.
+type Brick = {
+  left: number;   // % from the left edge
+  cells: number;  // studs wide (1–4)
+  color: 'red' | 'yellow' | 'blue' | 'green' | 'orange';
+  dur: number;    // seconds for a full fall
+  delay: number;  // seconds already elapsed
+  spin: number;   // degrees of rotation over the fall
+};
+
+const bricks: Brick[] = [
+  { left: 3,  cells: 4, color: 'blue',   dur: 34, delay: 2,  spin: 90 },
+  { left: 11, cells: 2, color: 'yellow', dur: 46, delay: 21, spin: -90 },
+  { left: 19, cells: 3, color: 'red',    dur: 39, delay: 33, spin: 180 },
+  { left: 27, cells: 1, color: 'green',  dur: 52, delay: 9,  spin: -90 },
+  { left: 35, cells: 2, color: 'orange', dur: 41, delay: 27, spin: 90 },
+  { left: 44, cells: 4, color: 'green',  dur: 36, delay: 14, spin: -180 },
+  { left: 52, cells: 2, color: 'blue',   dur: 49, delay: 38, spin: 90 },
+  { left: 60, cells: 3, color: 'yellow', dur: 37, delay: 5,  spin: -90 },
+  { left: 68, cells: 1, color: 'red',    dur: 55, delay: 30, spin: 180 },
+  { left: 76, cells: 4, color: 'orange', dur: 43, delay: 17, spin: -90 },
+  { left: 84, cells: 2, color: 'green',  dur: 38, delay: 44, spin: 90 },
+  { left: 92, cells: 3, color: 'blue',   dur: 47, delay: 11, spin: -180 },
+  { left: 97, cells: 2, color: 'red',    dur: 40, delay: 25, spin: 90 },
+];
+---
+
+<div class="brickfall" aria-hidden="true">
+  {bricks.map((b) => (
+    <span
+      class={`bk bk-${b.color}`}
+      style={`--left:${b.left}%; --cells:${b.cells}; --dur:${b.dur}s; --delay:-${b.delay}s; --spin:${b.spin}deg;`}
+    />
+  ))}
+</div>
+
+<style>
+  .brickfall {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .bk {
+    --cell: 16px;
+    position: absolute;
+    top: 0;
+    left: var(--left);
+    width: calc(var(--cells) * var(--cell));
+    height: var(--cell);
+    border-radius: 3px;
+    background: var(--brick);
+    box-shadow: 0 3px 0 var(--wall);
+    opacity: 0.5;
+    will-change: transform;
+    animation: brickfall var(--dur) linear var(--delay) infinite;
+  }
+
+  /* studs, sized to the brick's cell grid */
+  .bk::before {
+    content: "";
+    position: absolute;
+    inset: -4px 2px auto 2px;
+    height: 4px;
+    background-image: radial-gradient(
+      ellipse 5px 5px at calc(var(--cell) / 2) 100%,
+      var(--brick) 0 99%,
+      transparent 100%
+    );
+    background-size: var(--cell) 4px;
+    background-repeat: repeat-x;
+  }
+
+  .bk-red    { --brick: var(--red);    --wall: var(--red-dark); }
+  .bk-yellow { --brick: var(--yellow); --wall: var(--yellow-dark); }
+  .bk-blue   { --brick: var(--blue);   --wall: var(--blue-dark); }
+  .bk-green  { --brick: var(--green);  --wall: var(--green-dark); }
+  .bk-orange { --brick: var(--orange); --wall: var(--orange-dark); }
+
+  @keyframes brickfall {
+    from {
+      transform: translate3d(0, -15vh, 0) rotate(0deg);
+    }
+    to {
+      transform: translate3d(0, 115vh, 0) rotate(var(--spin));
+    }
+  }
+
+  /* Motion is decorative — drop it entirely rather than freezing mid-screen. */
+  @media (prefers-reduced-motion: reduce) {
+    .brickfall {
+      display: none;
+    }
+  }
+
+  /* On small screens the bricks crowd the text, so thin the field out. */
+  @media (max-width: 640px) {
+    .bk {
+      --cell: 12px;
+      opacity: 0.38;
+    }
+    .bk:nth-child(even) {
+      display: none;
+    }
+  }
+</style>

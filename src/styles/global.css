@@ -83,6 +83,8 @@ body {
 /* the white plate everything sits on */
 .wrap {
   position: relative;
+  /* lifts the plate above the falling-brick backdrop */
+  z-index: 1;
   max-width: var(--max-w);
   margin: 2.5rem auto;
   padding: 3rem 2.25rem 2.5rem;
