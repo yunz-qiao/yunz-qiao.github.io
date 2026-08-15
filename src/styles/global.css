@@ -262,11 +262,12 @@ header.site nav a::before {
   background-repeat: repeat-x;
 }
 
-header.site nav a:nth-of-type(4n + 2) { --brick: var(--green);  --wall: var(--green-dark); }
-header.site nav a:nth-of-type(4n + 3) { --brick: var(--orange); --wall: var(--orange-dark); }
+header.site nav a:nth-of-type(3n + 2) { --brick: var(--green);  --wall: var(--green-dark); }
+header.site nav a:nth-of-type(3n + 3) { --brick: var(--orange); --wall: var(--orange-dark); }
 
-/* yellow tab keeps white lettering, held together by a dark stroke */
-header.site nav a:nth-of-type(4n + 4) {
+/* Blog stays yellow wherever it sits in the nav, so reordering can't reassign
+   it. White lettering held together by a dark stroke. */
+header.site nav a[href="/blog"] {
   --brick: var(--yellow);
   --wall: var(--yellow-dark);
   --ink: #fff;
