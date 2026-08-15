@@ -27,9 +27,9 @@ if (project.data.link) links.push(`[link](${project.data.link})`);
   <p><em>{project.data.description}</em></p>
   {(project.data.repo || project.data.link) && (
     <p>
-      {project.data.repo && <a href={project.data.repo}>repo</a>}
+      {project.data.repo && <a href={project.data.repo} target="_blank" rel="noopener">repo</a>}
       {project.data.repo && project.data.link && ' · '}
-      {project.data.link && <a href={project.data.link}>link</a>}
+      {project.data.link && <a href={project.data.link} target="_blank" rel="noopener">link</a>}
     </p>
   )}
   <Content />
