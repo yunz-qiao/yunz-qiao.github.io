@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <!-- studs -->
-  <rect x="12" y="8" width="16" height="12" rx="5" fill="#9b0d11"/>
-  <rect x="36" y="8" width="16" height="12" rx="5" fill="#9b0d11"/>
-  <rect x="12" y="8" width="16" height="10" rx="5" fill="#d3151a"/>
-  <rect x="36" y="8" width="16" height="10" rx="5" fill="#d3151a"/>
+  <rect x="12" y="8" width="16" height="12" rx="5" fill="#e084a6"/>
+  <rect x="36" y="8" width="16" height="12" rx="5" fill="#e084a6"/>
+  <rect x="12" y="8" width="16" height="10" rx="5" fill="#f9b3cd"/>
+  <rect x="36" y="8" width="16" height="10" rx="5" fill="#f9b3cd"/>
   <!-- brick body -->
-  <rect x="6" y="16" width="52" height="40" rx="8" fill="#9b0d11"/>
-  <rect x="6" y="16" width="52" height="35" rx="8" fill="#d3151a"/>
+  <rect x="6" y="16" width="52" height="40" rx="8" fill="#e084a6"/>
+  <rect x="6" y="16" width="52" height="35" rx="8" fill="#f9b3cd"/>
   <text x="32" y="36" dominant-baseline="central" text-anchor="middle"
         font-family="Verdana, Geneva, sans-serif"
-        font-size="22" font-weight="700" fill="#fff">S</text>
+        font-size="22" font-weight="700" fill="#6d2544">S</text>
 </svg>

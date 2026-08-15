@@ -11,8 +11,10 @@
 
 :root {
   /* brick colours: face + side wall */
-  --red: #d3151a;
-  --red-dark: #9b0d11;
+  --red: #f9b3cd;
+  --red-dark: #e084a6;
+  /* light pink is too pale for white text — pink bricks use this ink instead */
+  --red-ink: #6d2544;
   --yellow: #f6c700;
   --yellow-dark: #c39a00;
   --blue: #0069b6;
@@ -130,7 +132,7 @@ header.site .title a {
   font-family: Fredoka, Nunito, system-ui, sans-serif;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: #fff;
+  color: var(--red-ink);
   text-decoration: none;
   background: var(--brick);
   border-radius: var(--brick-radius);
@@ -166,12 +168,13 @@ header.site nav > span {
 header.site nav a {
   --brick: var(--blue);
   --wall: var(--blue-dark);
+  --ink: #fff;
   display: inline-block;
   margin: 0;
   padding: 0.3rem 0.85rem 0.35rem;
   font-family: Fredoka, Nunito, system-ui, sans-serif;
   font-weight: 500;
-  color: #fff;
+  color: var(--ink);
   text-decoration: none;
   text-transform: capitalize;
   background: var(--brick);
@@ -182,7 +185,7 @@ header.site nav a {
 
 header.site nav a:nth-of-type(4n + 2) { --brick: var(--green);  --wall: var(--green-dark); }
 header.site nav a:nth-of-type(4n + 3) { --brick: var(--orange); --wall: var(--orange-dark); }
-header.site nav a:nth-of-type(4n + 4) { --brick: var(--red);    --wall: var(--red-dark); }
+header.site nav a:nth-of-type(4n + 4) { --brick: var(--red);    --wall: var(--red-dark); --ink: var(--red-ink); }
 
 /* pressing a brick down onto the plate */
 header.site nav a:hover,
@@ -190,7 +193,7 @@ header.site nav a:focus-visible {
   transform: translateY(2px);
   box-shadow: 0 2px 0 var(--wall);
   text-decoration: none;
-  color: #fff;
+  color: var(--ink);
 }
 
 header.site nav a[aria-current="page"] {
@@ -320,7 +323,7 @@ code, pre, kbd {
 
 code {
   background: var(--tile);
-  color: #b3121a;
+  color: var(--red-ink);
   padding: 0.12em 0.4em;
   border-radius: 5px;
   font-weight: 600;

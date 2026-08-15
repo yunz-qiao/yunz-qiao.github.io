@@ -7,8 +7,8 @@ const isActive = (href: string) => {
   return pathname === href || pathname.startsWith(href + '/') || pathname === href + '/';
 };
 
+// The site title links to '/', so an explicit "about" nav item would be redundant.
 const links = [
-  { href: '/', label: 'about' },
   { href: '/projects', label: 'projects' },
   { href: '/experience', label: 'experience' },
   { href: '/school', label: 'school' },
