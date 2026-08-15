@@ -38,7 +38,7 @@ const categories = Object.keys(grouped).sort();
           <li>
             <span class="title">
               {item.data.url ? (
-                <a href={item.data.url}>{item.data.title}</a>
+                <a href={item.data.url} target="_blank" rel="noopener">{item.data.title}</a>
               ) : (
                 <a href={`/archive/${item.id}/`}>{item.data.title}</a>
               )}

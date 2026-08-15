@@ -21,7 +21,7 @@ const { Content } = await render(item);
   meta={item.data.category}
 >
   {item.data.url && (
-    <p><a href={item.data.url}>{item.data.url}</a></p>
+    <p><a href={item.data.url} target="_blank" rel="noopener">{item.data.url}</a></p>
   )}
   <Content />
 </PostLayout>
