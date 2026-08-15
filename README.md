@@ -2,6 +2,8 @@
 
 Personal site, built with [Astro](https://astro.build).
 
+**Live at [yunz-qiao.github.io](https://yunz-qiao.github.io/)**
+
 ## Develop
 
 ```
@@ -25,9 +27,9 @@ static SVG at build time via `rehype-mathjax/svg`, so there is no client-side JS
 
 ## Deploy
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and publishes to GitHub Pages.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and publishes to GitHub Pages
+at <https://yunz-qiao.github.io/>.
 
-Hosting URL depends on the repo name:
-- If the repo is renamed to `yunzheqiao.github.io`, the site lives at the root URL.
-- Otherwise, uncomment `base: '/website'` in `astro.config.mjs` and the site lives at
-  `yunzheqiao.github.io/website/`.
+The repo is named `yunz-qiao.github.io`, so the site is served from the root URL and no `base` path
+is needed in `astro.config.mjs`. Pages is configured with build type "GitHub Actions" (not "deploy
+from a branch") — the workflow uploads `dist/` as the artifact.
