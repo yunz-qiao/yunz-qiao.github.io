@@ -2,29 +2,98 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Experience">
+<BaseLayout title="Experience" description="Industry and research experience of Steven (Yunzhe) Qiao.">
   <h1>Experience</h1>
 
   <p>
-    Replace this page with your résumé / CV content. Below is a stub structure you can edit
-    directly in <code>src/pages/experience.astro</code> — or convert this into a markdown-rendered
-    page later if you prefer authoring in markdown.
+    I work across machine learning systems and compilers &mdash; inference runtimes, neural
+    architecture search, and the infrastructure that makes both go fast. Below is what I've been up
+    to. For coursework, see <a href="/school/">School</a>.
   </p>
 
-  <h2>Work</h2>
+  <h2>Industry</h2>
   <ul>
-    <li><strong>Role</strong> &middot; Company &middot; <span style="color:var(--fg-muted)">2025&ndash;present</span>
-      <ul><li>One-line description of what you did.</li></ul>
+    <li>
+      <strong>Machine Learning Runtime Engineer Intern</strong> &middot; Cerebras Systems &middot;
+      <span style="color:var(--fg-muted)">May 2026 &ndash; Aug. 2026</span>
+      <ul>
+        <li>Co-developed a waferless simulator, enabling off-wafer inference debugging and performance benchmarking.</li>
+        <li>Refactored the inference metadata transmission pipeline, merging Token Metadata onto the Simulation Metadata Tensor and reducing simulation latency by 10&nbsp;ms.</li>
+        <li>Engineered architectural support for Cerebras's second-generation inference on the Waferless Inference Simulator.</li>
+        <li>Added support for testing and modelling the impact of different context lengths, annotating performance into RTIR.</li>
+        <li>Annotated RTIR performance on scheduler cycles for state-of-the-art models on both the Wafer Engine and the simulator.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Student Researcher</strong> &middot; Huawei &middot;
+      <span style="color:var(--fg-muted)">Aug. 2025 &ndash; Dec. 2025</span>
+      <ul>
+        <li>Reduced CPU core utilization and memory consumption by 10+% over static allocation through dynamic resource orchestration with runtime load-aware scheduling.</li>
+        <li>Increased computational efficiency of large-scale data processing workflows via UDF-level compiler optimizations with automatic vectorization and parallelization.</li>
+        <li>Improved stability of concurrent execution workflows under fluctuating workloads with real-time monitoring and scaling strategies, reducing execution latency.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>Research</h2>
+  <ul>
+    <li>
+      <strong>Undergraduate Research Assistant</strong> &middot; The Matter Lab &middot;
+      <span style="color:var(--fg-muted)">Apr. 2026 &ndash; present</span>
+      <ul>
+        <li>
+          Accelerating <code>std::autodiff</code> and adding GPU support to a deep learning framework
+          in Rust with <code>std::offload</code>, supervised by Al&aacute;n Aspuru-Guzik and Varinia Bernales.
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>Machine Learning Engineer</strong> &middot; Acceleration Consortium &middot;
+      <span style="color:var(--fg-muted)">Oct. 2025 &ndash; present</span>
+      <ul>
+        <li>Researching bottom-up Neural Architecture Search (NAS) algorithms that synthesize minimum viable neural networks under tight memory budgets.</li>
+        <li>Developed reinforcement-learning-guided evolutionary NAS algorithms.</li>
+        <li>Implemented a scalable training-free evaluation pipeline using aggregated zero-cost proxies to estimate model performance, cutting evaluation time by over 90%.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Undergraduate Research Assistant</strong> &middot; IDs Lab, Sichuan University &middot;
+      <span style="color:var(--fg-muted)">Jun. 2025 &ndash; Apr. 2026</span>
+      <ul>
+        <li>Researched agentic memory system architectures that enforce architectural isolation between trusted system instructions and untrusted external retrievals.</li>
+        <li>Developed latent-space filtering mechanisms in the vector retrieval pipeline to identify and neutralize adversarial embeddings before context integration.</li>
+        <li>Implemented in-context partitioning protocols during the memory write phase to prevent data poisoning and maintain long-term memory integrity.</li>
+      </ul>
     </li>
   </ul>
 
   <h2>Education</h2>
   <ul>
-    <li><strong>Degree</strong> &middot; Institution &middot; <span style="color:var(--fg-muted)">YYYY&ndash;YYYY</span></li>
+    <li>
+      <strong>Honours Bachelor of Science, Computer Science (Co-op)</strong> &middot;
+      University of Toronto &middot;
+      <span style="color:var(--fg-muted)">Sept. 2024 &ndash; May 2028</span>
+      <ul>
+        <li>GPA 4.0/4.0, Dean's List.</li>
+      </ul>
+    </li>
   </ul>
 
-  <h2>Other</h2>
+  <h2>Competitive Programming</h2>
   <ul>
-    <li>Awards, teaching, talks, etc.</li>
+    <li>
+      Co-President and team coach of the <strong>University of Toronto ICPC Club</strong>.
+    </li>
+    <li>
+      Placed <strong>12th of 52 teams</strong> at the 2026 ICPC North America Championship &mdash;
+      awarded high honors and qualified for the <strong>2026 ICPC World Finals</strong>.
+    </li>
+  </ul>
+
+  <h2>Technical Skills</h2>
+  <ul>
+    <li><strong>Languages:</strong> Rust, Python, C/C++, Java, C#, SQL (Postgres), HTML/CSS, JavaScript, MATLAB</li>
+    <li><strong>Technologies:</strong> Linux, MongoDB, AWS, Git, CI/CD, Docker, TensorFlow, PyTorch, LLVM, MLIR, Triton, CUDA</li>
+    <li><strong>Frameworks:</strong> React.js, Node.js, Flask, Django, FastAPI, .NET, LangChain, LangGraph, vLLM</li>
   </ul>
 </BaseLayout>

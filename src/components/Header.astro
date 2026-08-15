@@ -1,4 +1,6 @@
 ---
+import SocialLinks from './SocialLinks.astro';
+
 const { pathname } = Astro.url;
 const isActive = (href: string) => {
   if (href === '/') return pathname === '/' || pathname === '';
@@ -17,7 +19,10 @@ const links = [
 ---
 
 <header class="site">
-  <p class="title"><a href="/">Steven Qiao</a></p>
+  <div class="bar">
+    <p class="title"><a href="/">Steven Qiao</a></p>
+    <SocialLinks />
+  </div>
   <nav>
     {links.map((l, i) => (
       <>

@@ -18,14 +18,32 @@ const fmtDate = (d: Date) =>
 <BaseLayout description="Personal site of Steven Qiao.">
   <h1>Hi, I'm Steven.</h1>
   <p>
-    Short bio goes here. Replace this paragraph with a sentence or two about who you are and what
-    you're up to. The rest of the site is for past work, hobbies, experience, blog posts, and a
-    curated web archive.
+    Hi! I'm Steven, a third year undergraduate student at the University of Toronto studying Computer
+    Science and Math (Honours BSc, Co-op). I am interested in Algorithms, Game Theory, and Deep
+    Learning.
+  </p>
+
+  <p>
+    Most recently I was a Machine Learning Runtime Engineer intern at <strong>Cerebras Systems</strong>,
+    working on their waferless inference simulator. I also do research at the
+    <strong>Matter Lab</strong> (autodiff and GPU support for a deep learning framework in Rust) and
+    the <strong>Acceleration Consortium</strong> (neural architecture search under tight memory
+    budgets). More detail on the <a href="/experience/">Experience</a> page.
+  </p>
+
+  <p>
+    I'm Co-President and coach of the <strong>UofT ICPC Club</strong>. We placed 12th of 52 teams at
+    the 2026 ICPC North America Championship and qualified for the 2026 World Finals.
+  </p>
+
+  <p>
+    In my free time, I enjoy spending time doing Competitive Programming, playing Table Tennis and
+    watching Formula 1. See more in <a href="/hobbies/">Hobbies</a>!
   </p>
 
   <hr />
 
-  <h2>Recent writing</h2>
+  <h2>Recent Blogs</h2>
   {blog.length > 0 ? (
     <PostList
       entries={blog.map((p) => ({
@@ -41,7 +59,7 @@ const fmtDate = (d: Date) =>
 
   <hr />
 
-  <h2>Selected projects</h2>
+  <h2>Projects that I've worked on</h2>
   {projects.length > 0 ? (
     <PostList
       entries={projects.map((p) => ({

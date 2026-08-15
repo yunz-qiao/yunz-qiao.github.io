@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import remarkMath from 'remark-math';
-import rehypeMathjax from 'rehype-mathjax/svg';
+import rehypeKatex from 'rehype-katex';
 
 export default defineConfig({
   site: 'https://yunzheqiao.github.io',
@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [mdx()],
   markdown: {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeMathjax],
+    rehypePlugins: [rehypeKatex],
     shikiConfig: {
       theme: 'github-light',
       wrap: true,
