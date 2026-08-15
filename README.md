@@ -2,7 +2,7 @@
 
 Personal site, built with [Astro](https://astro.build).
 
-**Live at [yunz-qiao.github.io](https://yunz-qiao.github.io/)**
+**Live at [yunzqiao.cc](https://yunzqiao.cc/)**
 
 ## Develop
 

@@ -9,5 +9,6 @@
   <rect x="6" y="16" width="52" height="35" rx="8" fill="#f9b3cd"/>
   <text x="32" y="36" dominant-baseline="central" text-anchor="middle"
         font-family="Verdana, Geneva, sans-serif"
-        font-size="22" font-weight="700" fill="#6d2544">S</text>
+        font-size="22" font-weight="700" fill="#fff"
+        stroke="#e084a6" stroke-width="1.5" paint-order="stroke">S</text>
 </svg>

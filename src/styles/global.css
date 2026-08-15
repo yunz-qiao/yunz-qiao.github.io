@@ -94,8 +94,8 @@ body {
   border-radius: 18px 18px 0 0;
   background: linear-gradient(
     90deg,
-    var(--red) 0 25%,
-    var(--yellow) 25% 50%,
+    var(--yellow) 0 25%,
+    var(--red) 25% 50%,
     var(--blue) 50% 75%,
     var(--green) 75% 100%
   );
@@ -123,21 +123,25 @@ header.site .title {
   margin: 0;
 }
 
-/* name as a red brick */
+/* name as a yellow brick */
 header.site .title a {
-  --brick: var(--red);
+  --brick: var(--yellow);
   position: relative;
   display: inline-block;
   padding: 0.45rem 1.1rem 0.5rem;
   font-family: Fredoka, Nunito, system-ui, sans-serif;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--red-ink);
+  color: #fff;
+  /* White on yellow is low-contrast on its own, so the name gets the LEGO
+     wordmark treatment: a dark outline holding the white lettering. */
+  -webkit-text-stroke: 1px var(--yellow-dark);
+  paint-order: stroke fill;
   text-decoration: none;
   background: var(--brick);
   border-radius: var(--brick-radius);
   box-shadow:
-    0 6px 0 var(--red-dark),
+    0 6px 0 var(--yellow-dark),
     0 11px 14px rgba(22, 32, 48, 0.22);
 }
 
@@ -151,6 +155,42 @@ header.site .title a::before {
   background-image: var(--studs);
   background-size: var(--stud-w) var(--stud-h);
   background-repeat: repeat-x;
+}
+
+/* social icons + the archive link, sitting together opposite the name */
+header.site .bar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+header.site .archive-link {
+  --brick: var(--green);
+  --wall: var(--green-dark);
+  flex-shrink: 0;
+  padding: 0.22rem 0.7rem 0.28rem;
+  font-family: Fredoka, Nunito, system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  background: var(--brick);
+  border-radius: 7px;
+  box-shadow: 0 3px 0 var(--wall);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+header.site .archive-link:hover,
+header.site .archive-link:focus-visible {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--wall);
+  color: #fff;
+}
+
+header.site .archive-link[aria-current="page"] {
+  --brick: var(--red);
+  --wall: var(--red-dark);
+  color: var(--red-ink);
 }
 
 header.site nav {
@@ -185,7 +225,7 @@ header.site nav a {
 
 header.site nav a:nth-of-type(4n + 2) { --brick: var(--green);  --wall: var(--green-dark); }
 header.site nav a:nth-of-type(4n + 3) { --brick: var(--orange); --wall: var(--orange-dark); }
-header.site nav a:nth-of-type(4n + 4) { --brick: var(--red);    --wall: var(--red-dark); --ink: var(--red-ink); }
+header.site nav a:nth-of-type(4n + 4) { --brick: var(--yellow); --wall: var(--yellow-dark); --ink: var(--fg); }
 
 /* pressing a brick down onto the plate */
 header.site nav a:hover,
@@ -197,9 +237,10 @@ header.site nav a:focus-visible {
 }
 
 header.site nav a[aria-current="page"] {
-  --brick: var(--yellow);
-  --wall: var(--yellow-dark);
-  color: var(--fg);
+  --brick: var(--red);
+  --wall: var(--red-dark);
+  --ink: var(--red-ink);
+  color: var(--red-ink);
   text-decoration: none;
 }
 
@@ -255,8 +296,8 @@ h2::before {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: var(--yellow);
-  box-shadow: inset 0 -2px 0 var(--yellow-dark);
+  background: var(--red);
+  box-shadow: inset 0 -2px 0 var(--red-dark);
 }
 
 h3 { font-size: 1.12rem; }
@@ -285,10 +326,10 @@ strong {
   font-weight: 800;
 }
 
-/* ---------- divider: a yellow 1x4 brick ---------- */
+/* ---------- divider: a pink 1x4 brick ---------- */
 
 hr {
-  --brick: var(--yellow);
+  --brick: var(--red);
   position: relative;
   border: none;
   height: 16px;
@@ -296,7 +337,7 @@ hr {
   margin: 3rem auto 2.6rem;
   border-radius: 8px;
   background: var(--brick);
-  box-shadow: 0 5px 0 var(--yellow-dark);
+  box-shadow: 0 5px 0 var(--red-dark);
   overflow: visible;
   color: inherit;
 }
@@ -421,9 +462,9 @@ main ul:not(.entry-list) ul > li::before {
   min-width: 0;
   padding: 0.1rem 0.5rem;
   border-radius: 6px;
-  background: var(--yellow);
-  box-shadow: inset 0 -2px 0 var(--yellow-dark);
-  color: var(--fg);
+  background: var(--red);
+  box-shadow: inset 0 -2px 0 var(--red-dark);
+  color: var(--red-ink);
   font-size: 0.8rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -532,7 +573,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-  background: #fdf3cc;
+  background: #fdeaf1;
 }
 
 tbody tr:last-child td {

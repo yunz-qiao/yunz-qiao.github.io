@@ -4,7 +4,8 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 export default defineConfig({
-  site: 'https://yunz-qiao.github.io',
+  // Canonical host. The GitHub Pages deploy at yunz-qiao.github.io mirrors it.
+  site: 'https://yunzqiao.cc',
   integrations: [mdx()],
   markdown: {
     remarkPlugins: [remarkMath],

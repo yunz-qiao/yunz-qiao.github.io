@@ -13,15 +13,20 @@ const links = [
   { href: '/experience', label: 'experience' },
   { href: '/school', label: 'school' },
   { href: '/blog', label: 'blog' },
-  { href: '/hobbies', label: 'hobbies' },
-  { href: '/archive', label: 'archive' },
 ];
 ---
 
 <header class="site">
   <div class="bar">
     <p class="title"><a href="/">Steven Qiao</a></p>
-    <SocialLinks />
+    <div class="bar-right">
+      <SocialLinks />
+      <a
+        class="archive-link"
+        href="/archive"
+        aria-current={isActive('/archive') ? 'page' : undefined}
+      >archive</a>
+    </div>
   </div>
   <nav>
     {links.map((l, i) => (
